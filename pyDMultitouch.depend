@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1304531156 source:/home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/pyDMultitouch/dmultitouchmodule.c
+	<python2.6/Python.h>
+	"libdmultitouch.c"
+
+1304531418 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson//libdmultitouch.c
+	<stdint.h>
+	<stdlib.h>
+	<opencv/cv.h>
+

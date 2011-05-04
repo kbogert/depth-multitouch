@@ -1,0 +1,83 @@
+# depslib dependency file v1.0
+1304528727 source:/home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/kinectdemo.cpp
+	"libfreenect.hpp"
+	<pthread.h>
+	<stdio.h>
+	<iostream>
+	<string.h>
+	<cmath>
+	<vector>
+	"libdmultitouch.hpp"
+	<algorithm>
+	<GLUT/glut.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/glut.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	"vrpn/vrpn_Analog.h"
+	"vrpn/vrpn_Connection.h"
+
+1298315577 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/libfreenect.hpp
+	<libfreenect.h>
+	<stdexcept>
+	<map>
+	<pthread.h>
+
+1304540923 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/libdmultitouch.c
+	<stdint.h>
+	<stdlib.h>
+	<opencv/cv.h>
+
+1303515780 source:/home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/libdmultitouch.c
+	<stdint.h>
+	<stdlib.h>
+	<opencv/cv.h>
+
+1304520428 source:/home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/libdmultitouch.cpp
+	"libdmultitouch.hpp"
+	"libdmultitouch.c"
+
+1304520423 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/libdmultitouch.hpp
+	<stdint.h>
+	<vector>
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Analog.h
+	"vrpn_Connection.h"
+	"vrpn_BaseClass.h"
+	"vrpn_Serial.h"
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Connection.h
+	<stdio.h>
+	"vrpn_Shared.h"
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Shared.h
+	"vrpn_Types.h"
+	<sys/time.h>
+	<windows.h>
+	<sys/timeb.h>
+	<winsock.h>
+	<task.h>
+	<ulocks.h>
+	<process.h>
+	<pthread.h>
+	<semaphore.h>
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Types.h
+	"vrpn_Configure.h"
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Configure.h
+	<dinput.h>
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_BaseClass.h
+	"vrpn_Shared.h"
+	"vrpn_Connection.h"
+
+1288873756 /home/kbogert/Dropbox/School/Grad/Second Year/Directed Study - Johnson/vrpn/vrpn_Serial.h
+	<time.h>
+	<math.h>
+	<stdlib.h>
+	<stdio.h>
+	<io.h>
+	<sys/time.h>
+
