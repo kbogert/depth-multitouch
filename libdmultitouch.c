@@ -1,8 +1,5 @@
 /*
  * library for detecting touches on a flat surface using depth maps.
- *
- *
- *
  */
 
 #include <stdint.h>
@@ -98,6 +95,8 @@ void d_multitouch_free_basemap(void * data) {
     d_multitouch_reset(data);
 }
 
+/* call this to set the background depthmap.  Do this with just the static background in view and then the algorithm can find fingers
+   in the scene */
 void d_multitouch_set_base(uint16_t * depthmap, int width, int height, void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     multitouch_data->img_width = width;
@@ -107,6 +106,8 @@ void d_multitouch_set_base(uint16_t * depthmap, int width, int height, void * da
     memcpy(multitouch_data->base_depthmap, depthmap, sizeof(uint16_t) * width * height);
 }
 
+/*  Set the maximum height above the background to detect touches at.  Increasing results in registering touches that are just instances
+    of the user putting their hands close to the background.  Too small and the touchpoint could jitter.  I found 7 worked for me  (minimum at the moment is 4) */
 void d_multitouch_set_height_of_touch(int units, void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     multitouch_data->height_of_touch = units;
@@ -148,6 +149,7 @@ void fitCircle(CvSeq * contour, double * xp, double * yp, double * r){
 	cvReleaseMat(&q);
 }
 
+/*  Accept or reject a connected region based on whether there's a finger and hand connected to it */
 int _d_multitouch_valid_touch_test (uint16_t * depthmap, int x, int y, void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
 
@@ -212,6 +214,7 @@ void _d_multitouch_clear_touches(struct d_multitouch_touch * head) {
     free(head);
 }
 
+/*  Call this once each frame with the latest depth image, it will generate the touches and various images you can retrieve with the functions below */
 void d_multitouch_update(uint16_t * depthmap, void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     if (multitouch_data->base_depthmap == 0) {
@@ -295,6 +298,7 @@ void d_multitouch_update(uint16_t * depthmap, void * data) {
 
 }
 
+/*  Get an image with the found touches drawn on it, the image is completely white except for the blue circles where the touches are. */
 uint8_t * d_multitouch_get_touch_map(void * data) {
     // create a 3 channel blank image
     // draw circles for each of the current touches
@@ -314,21 +318,25 @@ uint8_t * d_multitouch_get_touch_map(void * data) {
     return (uint8_t *)multitouch_data->touch_map->imageData;
 }
 
+/*  Get the raw difference between the base depthmap and the latest depthmap */
 uint16_t * d_multitouch_get_depth_difference(void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     return multitouch_data->cur_delta_map;
 }
 
+/*  Draw the raw connected regions found by opencv.  These will be the unfiltered points that are between 4 and the configured maximum touch height */
 uint8_t * d_multitouch_get_connected_regions(void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     return (uint8_t *)multitouch_data->connected_regions->imageData;
 }
 
+/*  Draw a debug image with the walking up points that the filter algorithm has found drawn in small red dots */
 uint8_t * d_multitouch_get_depth_filter_debug(void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     return (uint8_t *)multitouch_data->connected_regions_filter->imageData;
 }
 
+/* return the current list of touches */
 struct d_multitouch_touch * d_multitouch_get_touches(void * data) {
     _d_multitouch_data * multitouch_data = (_d_multitouch_data *) data;
     return multitouch_data->cur_touches;

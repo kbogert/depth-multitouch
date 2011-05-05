@@ -19,8 +19,8 @@ class depth_multitouch {
     public:
         depth_multitouch();
         void set_image_size(int width, int height);
-        void set_base(uint16_t * depthmap);
         void set_height_of_touch(int units);
+        void set_base(uint16_t * depthmap);
 
         void update(uint16_t * depthmap);
 
